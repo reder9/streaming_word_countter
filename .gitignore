@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+jabroni_env/
+venv/
+env/
+ENV/
+.venv/
+.env
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Vosk AI model files (too large for git - auto-downloaded)
+vosk-model-*/
+
+# Audio files
+*.wav
+*.mp3
+
+# Data and temporary files
+*.tmp
+*.log
+jabroni_data.json
+
+# Build output
+build_output/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Windows
+*.exe
+*.msi
+
+# Backup files
+*.bak
+*.backup
+
+# Keep important files
+!requirements.txt
+!*.md
+!*.html
+!*.py
+!*.sh
+!*.bat

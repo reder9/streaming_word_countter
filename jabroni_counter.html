@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vosk Jabroni Counter</title>
+    <style>
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: transparent;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+        .counter-container {
+            text-align: center;
+            background: rgba(0, 20, 40, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 100, 200, 0.3);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(100, 200, 255, 0.4);
+        }
+        .title {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: #64C8FF;
+        }
+        .vosk-badge {
+            font-size: 0.7em;
+            color: #4ECDC4;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        .count {
+            font-size: 8em;
+            font-weight: bold;
+            color: #64C8FF;
+            text-shadow: 0 0 20px #64C8FF;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        .count.flash {
+            animation: voskFlash 1.8s ease-in-out;
+        }
+        .subtitle {
+            font-size: 1.5em;
+            opacity: 0.9;
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        
+        @keyframes voskFlash {
+            0% { 
+                transform: scale(1); 
+                color: #64C8FF;
+                text-shadow: 0 0 20px #64C8FF;
+            }
+            20% { 
+                transform: scale(1.4); 
+                color: #FF6B6B;
+                text-shadow: 0 0 40px #FF6B6B, 0 0 80px #FF6B6B;
+            }
+            40% { 
+                transform: scale(1.3); 
+                color: #4ECDC4;
+                text-shadow: 0 0 35px #4ECDC4, 0 0 70px #4ECDC4;
+            }
+            60% { 
+                transform: scale(1.35); 
+                color: #FFD93D;
+                text-shadow: 0 0 40px #FFD93D, 0 0 80px #FFD93D;
+            }
+            80% { 
+                transform: scale(1.2); 
+                color: #6BCF7F;
+                text-shadow: 0 0 30px #6BCF7F, 0 0 60px #6BCF7F;
+            }
+            100% { 
+                transform: scale(1); 
+                color: #64C8FF;
+                text-shadow: 0 0 20px #64C8FF;
+            }
+        }
+    </style>
+    <script>
+        function checkForNewDetection() {
+            const currentCount = 13;
+            const lastCount = localStorage.getItem('lastJabroniCount') || '0';
+            
+            if (parseInt(currentCount) > parseInt(lastCount)) {
+                const countElement = document.querySelector('.count');
+                countElement.classList.add('flash');
+                
+                setTimeout(() => {
+                    countElement.classList.remove('flash');
+                }, 1800);
+                
+                localStorage.setItem('lastJabroniCount', currentCount.toString());
+            }
+            
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
+        }
+        
+        window.onload = checkForNewDetection;
+    </script>
+</head>
+<body>
+    <div class="counter-container">
+        <div class="title">JABRONI COUNTER</div>
+        <div class="count">13</div>
+        <div class="subtitle">Jabronis Detected</div>
+    </div>
+</body>
+</html>
